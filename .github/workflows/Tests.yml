@@ -33,3 +33,9 @@ jobs:
       with:
         name: Cucumber Reports
         path: target/Reports
+        
+    - name: Publish Website
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.TOKEN }}
+        publish_dir: target/Reports
