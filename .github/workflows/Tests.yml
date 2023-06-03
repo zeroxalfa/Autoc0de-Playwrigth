@@ -35,6 +35,14 @@ jobs:
         path: target/Reports
         
     - name: Publish Website
+      run: |
+        mkdir gh-pages
+        cp -r target/Reports gh-pages/
+        echo '<html><head><meta http-equiv="refresh" content="0;url=target/Reports/index.html" /></head></html>' > gh-pages/index.html
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}    
+        
+    - name: Publish Website
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.TOKEN }}
